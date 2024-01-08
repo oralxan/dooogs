@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+  posts
+{% endblock title %}
+
+{% block style %}
+  <style>
+    .body{
+      background-color: rgb(245, 197, 135);
+    }
+    img{
+        max-width: 50vh;
+    }
+    .post{
+        border: 1px solid black;
+        margin: 3px 0 ;
+        background-color: rgb(208, 208, 250);
+        padding: 10px;
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+
+    }
+    
+  </style>
+{% endblock style %}
+
+{% block content %}
+
+    {% for post in posts %}
+    <h1 style="text-decoration: none;">
+    <a href="{% url 'home' %}">🏠︎</a>
+  </h1>
+  
+
+
+    <div class="post">
+      <a href="{% url 'post' post.id %}">
+        <p>ID:{{post.ID}}</p>
+      </a>
+      <h1>Title:{{post.title}}</h1>
+      <h3>Description:{{post.description}}</h3>
+      <img src="{{ post.image.url }}">
+    </div>
+    
+    
+        {% endfor %}
+
+
+{% endblock content %}
